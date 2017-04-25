@@ -1,0 +1,86 @@
+*{
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    font-family: '微软雅黑';
+    text-decoration: none;
+}
+.nav{
+	width: 100%;
+	height: 6.1rem;
+	/* background:-webkit-gradient(linear, 0 0, 0 100%, from(#20bbed) , to(#23b2f0)); */
+	background:-webkit-gradient(linear, 0 0, 0 100%, from(#20bbed),to(#23b2f0));
+}
+.nav-content{
+	width: 100%;
+	height: 5rem;
+	margin: 0 auto;
+}
+.money{
+	width: 1.97rem;
+	color: #ffffff;
+	padding-top: 2.08rem;
+	margin:0 auto;
+	font-size: 1.2rem;
+}
+.findpwd{
+	float: right;
+	height: 0.4rem;
+	width: 0.4rem;
+	margin-top: 0.3rem;
+	margin-right: 0.3rem;
+}
+.howtoAchieve{
+	padding-top: 0.55rem;
+	width: 100%;
+	text-align: center;
+	margin:0 auto;
+    font-size: 0.24rem;
+    color: #ffffff;
+    opacity: 0.7;
+}
+ 
+.kinds li{
+	float: left;
+	width: 33.3%;
+	text-align: center;
+	color:#ffffff;
+	font-size: 0.24rem;
+	position: relative;
+	height: 0.5rem;
+	color: rgba(255,255,255,0.7);
+	padding-top: 0.28rem;
+
+}
+.kinds .changeColor{
+	color: white;
+}
+.kinds li div{
+	position: absolute;
+    left: 30%;
+    bottom: -53%;
+
+}
+.moneyContent{
+	border-bottom: 1px solid #e8ebed;
+	padding-left: 0.2rem;
+	padding-right: 0.2rem;
+	padding-top: 0.15rem;
+	padding-bottom: 0.15rem;
+}
+.moneyInfo{
+	font-size: 0.3rem;
+	color: #667d89;
+	padding-bottom: 0.1rem;
+}
+.moneyDate{
+	font-size:0.24rem;
+	color: #c6d2d9;
+}
+.moneyInfo p{
+	margin-top: 0.24rem;
+	font-size: 0.24rem;
+}
+.color-red{
+	color: #ff5d32;
+}
