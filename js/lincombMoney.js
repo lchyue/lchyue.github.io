@@ -7,9 +7,9 @@ touchClick($('.kinds li'),function(){
   /*  console.log($(this).index())*/
      $('.content .moneyContent').eq($(this).index()).removeClass('hide');
  });
-/* document.addEventListener('touchstart',function(ev){
+ document.addEventListener('touchstart',function(ev){
      ev.preventDefault();
- },false);*/
+ },false);
  $(document).on('touchstart',function(ev){
    var moveType = '';
      var disY = ev.originalEvent.touches[0].pageY;
