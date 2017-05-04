@@ -7,11 +7,10 @@ touchClick($('.kinds li'),function(){
   /*  console.log($(this).index())*/
      $('.content .moneyContent').eq($(this).index()).removeClass('hide');
  });
- document.addEventListener('touchstart',function(ev){
-     ev.preventDefault();
- },false);
- $(document).on('touchstart',function(ev){
-   var moveType = '';
+ $('.nav-content').on('touchstart',drag);
+ $('.kinds li').on('touchstart',drag);
+ function drag(ev){
+    var moveType = '';
      var disY = ev.originalEvent.touches[0].pageY;
      // console.log(disY);
     $(document).on('touchmove',touchMove);
@@ -40,7 +39,7 @@ touchClick($('.kinds li'),function(){
          }
      }
      ev.originalEvent.preventDefault();
- });
+ }
  function touchClick(obj,fn){   
    obj.on('touchstart',function(ev){
        var _this = this;
