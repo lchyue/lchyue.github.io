@@ -39,7 +39,7 @@ touchClick($('.kinds li'),function(){
                break;
          }
      }
-  /*   ev.originalEvent.preventDefault();*/
+     ev.originalEvent.preventDefault();
  });
  function touchClick(obj,fn){   
    obj.on('touchstart',function(ev){
