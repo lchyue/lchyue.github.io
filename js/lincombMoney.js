@@ -32,9 +32,9 @@ $(function() {
       /*  console.log($(this).index())*/
         $('.content .moneyContent').eq($(this).index()).removeClass('hide');
     });
-    // document.addEventListener('touchstart',function(ev){
-    //     ev.preventDefault();
-    // },false);
+    $(".nav").addEventListener('touchstart',function(ev){
+        ev.preventDefault();
+    },false);
     $(".nav").on('touchstart',function(ev){
         var moveType = '';
         var disY = ev.originalEvent.touches[0].pageY;
@@ -75,7 +75,7 @@ $(function() {
                     break;
             }
         }
-        // ev.originalEvent.preventDefault();
+        ev.originalEvent.preventDefault();
     });
     function touchClick(obj,fn){   
         obj.on('touchstart',function(ev){
@@ -93,8 +93,8 @@ $(function() {
                 $(document).off('touchmove',touchMove);
                 $(document).off('touchend',touchEnd);
             }
-            // ev.originalEvent.stopPropagation();
-            // ev.isDefaultPrevented();
+            ev.originalEvent.stopPropagation();
+            ev.isDefaultPrevented();
         });
     } 
 
