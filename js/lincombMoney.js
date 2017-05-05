@@ -56,7 +56,7 @@ touchClick($('.kinds li'),function(){
           $(document).off('touchmove',touchMove);
           $(document).off('touchend',touchEnd);
       }
-        ev.originalEvent.stopPropagation();
+        /*ev.originalEvent.stopPropagation();*/
       ev.isDefaultPrevented();
   });
  }  
