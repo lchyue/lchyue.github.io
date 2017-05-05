@@ -1,5 +1,4 @@
-$(function(){
-$('body').css('overflow','hidden');
+
 
   touchClick($('.kinds li'),function(){
    $('.kinds li div').addClass('hide');
@@ -62,12 +61,13 @@ $('body').css('overflow','hidden');
      }
      ev.originalEvent.preventDefault();
  }
+
  function touchClick(obj,fn){   
    obj.on('touchstart',function(ev){
        var _this = this;
        var moveCheck = false;
-       $(document).on('touchmove',touchMove);
-       $(document).on('touchend',touchEnd);
+       $('.nav').on('touchmove',touchMove);
+       $('.nav').on('touchend',touchEnd);
        function touchMove(){
            moveCheck = true;
        }
@@ -82,5 +82,3 @@ $('body').css('overflow','hidden');
       ev.isDefaultPrevented();
   });
  }  
-})
-
