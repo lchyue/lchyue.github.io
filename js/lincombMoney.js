@@ -7,30 +7,41 @@ touchClick($('.kinds li'),function(){
   /*  console.log($(this).index())*/
      $('.content .moneyContent').eq($(this).index()).removeClass('hide');
  });
- $('.nav-content').on('touchstart',drag);
+ $('.nav').on('touchstart',drag);
  /*$('.kinds li').on('touchstart',drag);*/
  function drag(ev){
     var moveType = '';
      var disY = ev.originalEvent.touches[0].pageY;
      // console.log(disY);
-    $(document).on('touchmove',touchMove);
+    $('.nav').on('touchmove',touchMove);
    $(document).on('touchend',touchEnd);
   function touchMove(ev){
      if(disY-ev.originalEvent.touches[0].pageY > 50){
         moveType = 'top';
      }
       else if(disY-ev.originalEvent.touches[0].pageY < -50){
+         
           moveType = 'down';
+          /*alert(moveType);*/
+           $('.nav-content').slideDown(300);
+               $('.nav').animate( { height: "6.1rem" }, 500 );
+               $(".kinds").css({
+                  "position":"static",
+                  "background":"rgba(255,255,255,0)",
+                  height:"auto"
+              });
+
+               
        }
      }
    function touchEnd(){
          //end
         $(document).off('touchmove',touchMove);
-        $(document).off('touchend',touchEnd);
+        $('.nav').off('touchend',touchEnd);
         switch(moveType){
           case 'top':
               $('.nav-content').slideUp(550);
-              $('.nav').animate( { height: "1.1rem" }, 500 );
+              $('.nav').animate( { height: "1.1rem" }, 100 );
               $(".kinds").css({
                   "position":"fixed",
                   "top":0,
@@ -40,10 +51,16 @@ touchClick($('.kinds li'),function(){
             });
 
                break;
-           case 'down':
-                 $('.nav-content').slideDown(300);
+/*           case 'down':
+               $('.nav-content').slideDown(300);
                $('.nav').animate( { height: "6.1rem" }, 500 );
-               break;
+               $(".kinds").css({
+                  "position":"static",
+                  "background":"rgba(255,255,255,0)",
+                  height:"auto"
+              });
+
+               break;*/
          }
      }
      ev.originalEvent.preventDefault();
