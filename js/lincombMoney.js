@@ -8,7 +8,7 @@ touchClick($('.kinds li'),function(){
      $('.content .moneyContent').eq($(this).index()).removeClass('hide');
  });
  $('.nav').on('touchstart',drag);
- /*$('.kinds li').on('touchstart',drag);*/
+ $('.kinds li').on('touchstart',drag);
  function drag(ev){
     var moveType = '';
      var disY = ev.originalEvent.touches[0].pageY;
