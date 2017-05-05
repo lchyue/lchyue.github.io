@@ -79,6 +79,6 @@
           $('.nav').off('touchend',touchEnd);
       }
      /*   ev.originalEvent.stopPropagation();*/
-      ev.isDefaultPrevented();
+       ev.originalEvent.preventDefault();
   });
  }  
