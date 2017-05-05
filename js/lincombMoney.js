@@ -1,84 +1,66 @@
-
-
-  touchClick($('.kinds li'),function(){
-   $('.kinds li div').addClass('hide');
-     $('.content .moneyContent').addClass('hide');
-   $('.kinds li div').eq($(this).index()).removeClass('hide');
-    $('.kinds li').removeClass('changeColor');
-    $('.kinds li').eq($(this).index()).addClass('changeColor');
-  /*  console.log($(this).index())*/
-     $('.content .moneyContent').eq($(this).index()).removeClass('hide');
- });
- $('.nav').on('touchstart',drag);
- /*$('.kinds li').on('touchstart',drag);*/
- function drag(ev){
-    var moveType = '';
-     var disY = ev.originalEvent.touches[0].pageY;
-     // console.log(disY);
-    $('.nav').on('touchmove',touchMove);
-   $('.nav').on('touchend',touchEnd);
-  function touchMove(ev){
-     if(disY-ev.originalEvent.touches[0].pageY > 50){
-        moveType = 'top';
-     }
-      else if(disY-ev.originalEvent.touches[0].pageY < -50){
-         
-          moveType = 'down';
-          
-       }
-     }
-   function touchEnd(){
-         //end
-        $(document).off('touchmove',touchMove);
-        $('.nav').off('touchend',touchEnd);
-        switch(moveType){
-          case 'top':
-              $('body').css('overflow','auto');
-              $('.nav-content').slideUp(550);
-              $('.nav').animate( { height: "1.1rem" }, 500 );
-              /*$(".kinds").css({
-                  "position":"fixed",
-                  "top":0,
-                  "height":"1.1rem",
-                  "width":"100%",
-                  "background":"-webkit-gradient(linear, 0 0, 0 100%, from(#20bbed),to(#23b2f0))"
-            });*/
-
-               break;
-           case 'down':
-           /*     alert();*/
-               $('body').css('overflow','auto');
-               $('.nav-content').slideDown(300);
-               $('.nav').animate( { height: "6.1rem" }, 500 );
-               /*$(".kinds").css({
-                  "position":"static",
-                  "background":"rgba(255,255,255,0)",
-                  height:"auto"
-              });*/
-
-               break;
-         }
-     }
-     ev.originalEvent.preventDefault();
- }
-
- function touchClick(obj,fn){   
-   obj.on('touchstart',function(ev){
-       var _this = this;
-       var moveCheck = false;
-       $('.nav').on('touchmove',touchMove);
-       $('.nav').on('touchend',touchEnd);
-       function touchMove(){
-           moveCheck = true;
-       }
-       function touchEnd(){
-           if(!moveCheck){
-               fn && fn.call(_this);
-           }
-          $('.nav').off('touchmove',touchMove);
-          $('.nav').off('touchend',touchEnd);
-      }
-     /*   ev.originalEvent.stopPropagation();*/
-       ev.originalEvent.preventDefault();
+$('.kinds li').each(function(){
+  touchClick(this,function(){
+    $('.kinds li').removeClass('active');
+    $(this).addClass('active');
+    $('.content .moneyContent').eq($(this).index()).removeClass('hide');
   });
- }  
+});
+$('.nav')[0].addEventListener('touchstart',drag,false);
+function drag(ev){
+  var moveType = '';
+  var disY = ev.touches[0].pageY;
+  // console.log(disY);
+  document.addEventListener('touchmove',touchMove);
+  document.addEventListener('touchend',touchEnd);
+  function touchMove(ev){
+    if(disY-ev.touches[0].pageY > 50){
+      moveType = 'top';
+    }
+    else if(disY-ev.touches[0].pageY < -50){
+      moveType = 'down';
+    }
+  }
+  function touchEnd(){
+    //end
+    switch(moveType){
+      case 'top':
+        $('.nav-content').slideUp(550);
+        $('.nav').animate( { height: "1.1rem" }, 500 );
+        break;
+      case 'down':
+        $('.nav-content').slideDown(300);
+        $('.nav').animate( { height: "6.1rem" }, 500 );
+        break;
+    }
+    document.removeEventListener('touchmove',touchMove);
+    document.removeEventListener('touchend',touchEnd);
+  }
+  ev.preventDefault();
+}
+function touchClick(obj,fn){
+   obj.addEventListener('touchstart',function(ev){
+      var _this = this;
+      var moveCheck = false;
+      var disX = ev.touches[0].pageX;
+      var disY = ev.touches[0].pageY;
+      document.addEventListener('touchmove',touchmove,false);
+      document.addEventListener('touchend',touchend,false);
+      function touchmove(ev){
+        var curX = Math.floor(disX - ev.touches[0].pageX);
+        var curY = Math.floor(disY - ev.touches[0].pageY);
+        if(curX > 10 && curY > 10){
+          moveCheck = true;
+        }
+      }
+      function touchend(){
+        if(!moveCheck){
+          fn && fn.call(_this);
+        }
+        moveCheck = false;
+        document.removeEventListener('touchmove',touchmove);
+        obj.removeEventListener('touchend',touchend);
+      }
+      ev.preventDefault();
+      //ev.stopPropagation();
+  },false);
+}  
