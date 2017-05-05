@@ -1,4 +1,7 @@
-touchClick($('.kinds li'),function(){
+$(function(){
+$('body').css('overflow','hidden');
+
+  touchClick($('.kinds li'),function(){
    $('.kinds li div').addClass('hide');
      $('.content .moneyContent').addClass('hide');
    $('.kinds li div').eq($(this).index()).removeClass('hide');
@@ -31,6 +34,7 @@ touchClick($('.kinds li'),function(){
         $('.nav').off('touchend',touchEnd);
         switch(moveType){
           case 'top':
+              $('body').css('overflow','auto');
               $('.nav-content').slideUp(550);
               $('.nav').animate( { height: "1.1rem" }, 500 );
               /*$(".kinds").css({
@@ -44,6 +48,7 @@ touchClick($('.kinds li'),function(){
                break;
            case 'down':
            /*     alert();*/
+               $('body').css('overflow','auto');
                $('.nav-content').slideDown(300);
                $('.nav').animate( { height: "6.1rem" }, 500 );
                /*$(".kinds").css({
@@ -77,3 +82,5 @@ touchClick($('.kinds li'),function(){
       ev.isDefaultPrevented();
   });
  }  
+})
+
