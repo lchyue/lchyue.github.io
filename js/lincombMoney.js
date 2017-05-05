@@ -75,8 +75,8 @@ $('body').css('overflow','hidden');
            if(!moveCheck){
                fn && fn.call(_this);
            }
-          $(document).off('touchmove',touchMove);
-          $(document).off('touchend',touchEnd);
+          $('.nav').off('touchmove',touchMove);
+          $('.nav').off('touchend',touchEnd);
       }
      /*   ev.originalEvent.stopPropagation();*/
       ev.isDefaultPrevented();
